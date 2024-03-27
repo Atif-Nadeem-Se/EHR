@@ -1,0 +1,46 @@
+﻿@model Patient
+
+@{
+    var gender = Model.Gender == "M" ? "Male" : "Female";
+
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class="col-sm-10">
+            @gender
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DateOfBirth.ToString("dd/MM/yyyy")
+        </dd>
+    </dl>
+</div>
+<hr />
+
+<div class="form-group btn-group">
+    <a asp-action="Index" class="btn btn-sm btn-secondary">Back</a>
+    <a asp-action="Create" asp-route-id="@Model?.Id" class="btn btn-primary" >Edit</a>
+</div>

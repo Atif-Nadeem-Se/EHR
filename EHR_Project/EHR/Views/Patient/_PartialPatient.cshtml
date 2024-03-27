@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Diagnosis>
+@{
+    var m = Model.FirstOrDefault();
+}
+@if (m != null)
+{
+    var gender = m.Patient.Gender == "M" ? "Male" : "Female";
+    <div class="text-center">
+    <dl class="row">
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+        <dd class="col-sm-10">
+            @m.Patient.FirstName
+        </dd>
+        <dt class="col-sm-2">
+           Last Name
+        </dt>
+        <dd class="col-sm-10">
+            @m.Patient.LastName
+        </dd>
+        <dt class="col-sm-2">
+            Gender
+        </dt>
+        <dd class="col-sm-10">
+            @gender
+        </dd>
+        <dt class="col-sm-2">
+            Date Of Birth
+        </dt>
+        <dd class="col-sm-10">
+            @m.Patient.DateOfBirth.ToString("dd/MM/yyyy")
+        </dd>
+    </dl>
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Description</th>
+                        <th>Disease Type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var i in Model)
+                {
+                    var status = i.Disease.Active == true ? "Active" : "Doesn't exist";
+                        <tr>
+                            <td>@i.Disease.Name</td>
+                            <td>@i.Disease.Description</td>
+                            <td>@i.Disease.Type</td>
+                        <td>@status </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        
+    </div>
+
+}
+else
+{
+    <div class="text-center">
+        <h5 class="display-4">No associated diagnosis found</h5>
+    </div>
+}
