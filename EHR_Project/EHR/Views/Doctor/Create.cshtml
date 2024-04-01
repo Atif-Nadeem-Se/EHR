@@ -1,0 +1,51 @@
+﻿@model Doctor
+<h4>Add new doctor</h4>
+
+<form method="post" asp-controller="Doctor" asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <input asp-for="Id" name="Id" id="Id" type="hidden" />
+    <div class="row">
+        <div class="col-md-6">
+            <label>Name</label>
+            <input class="form-control" asp-for="Name" name="Name" id="Name" placeholder="please enter name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+        </div>
+        <div class="col-md-6">
+            <label>Joining Date</label>
+            <input asp-for="JoiningDate" type="date" class="form-control" name="JoiningDate" id="JoiningDate" placeholder="please enter Joining Date" />
+            <span asp-validation-for="JoiningDate" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label>Speciality</label>
+            <input class="form-control" asp-for="Speciality" name="Speciality" id="Speciality" placeholder="please enter Speciality" />
+            <span asp-validation-for="Speciality" class="text-danger"></span>
+
+        </div>
+        <div class="col-md-6">
+            <label>Qualification</label>
+            <input asp-for="Qualification" class="form-control" name="Qualification" id="Qualification" placeholder="please enter Qualification" />
+            <span asp-validation-for="Qualification" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>Address</label>
+            <textarea class="form-control" rows="3" asp-for="Address" name="Address" id="Address" placeholder=""> </textarea>
+            <span asp-validation-for="Address" class="text-danger"></span>
+
+        </div>
+    </div>
+    <row class="btn-group mt-1 float-sm-end">
+        <a asp-action="Index" class="btn bbtn-sm btn-secondary">Back</a>
+
+        <button type="submit" asp-controller="Doctor" asp-action="Create" class="btn btn-primary" name="Submit">
+            Submit
+        </button>
+    </row>
+
+</form>
